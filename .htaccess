@@ -1,0 +1,15 @@
+RewriteEngine On
+
+# Laravel assets
+RewriteRule ^assets/(.*)$ dashboard/public/assets/$1 [L]
+
+# Laravel storage
+RewriteRule ^storage/(.*)$ dashboard/public/storage/$1 [L]
+
+# Existing files/directories
+RewriteCond %{REQUEST_FILENAME} -f [OR]
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteRule ^ - [L]
+
+# Laravel routes
+RewriteRule ^ dashboard/public/index.php [L]
